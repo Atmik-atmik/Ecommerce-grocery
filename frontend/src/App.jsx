@@ -15,11 +15,11 @@ import SignUp from './pages/SignUp'
 import Navbar from './components/Navbar'
 
 const App = () => {
-  const admitPath = useLocation().pathname.includes("admin");
+  const adminPath = useLocation().pathname.includes("admin");
   return (
     <>
       <div>
-       {!admitPath && <Navbar/>}
+       {!adminPath && <Navbar/>}
        <Routes>
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/shop" element = {<Shop/>}/>
