@@ -1,11 +1,19 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useContext, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import {Heart, ShoppingBag} from "lucide-react"
 import {assets} from "../assets/assets.js"
+import { AppContext } from "../contex/AppContex.jsx"
 
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false)
+
+    const {navigate} = useContext(AppContext)
+    const [open, setOpen] = useState(false);
+    const location = useLocation();
+
+    const isActive = (path)=>{
+        return location.pathname == path? "text-[var(--color-secondary)] border-b border-[var(--color-primary)]": "";
+    }
     return (
         <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
 
@@ -15,10 +23,10 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="hidden sm:flex items-center gap-8">
-                <Link to={'/'}>Home</Link>
-                <Link to={'/'}>Shop</Link>
-                <Link to={'/'}>About</Link>
-                <Link to={'/'}>Contact</Link>
+                <Link to={'/'} className={isActive("/")} >Home</Link>
+                <Link to={'/shop'} className={isActive("/shop")}>Shop</Link>
+                <Link to={'/about'} className={isActive("/about")}>About</Link>
+                <Link to={'/contact'} className={isActive("/contact")}>Contact</Link>
                 
 
                 
@@ -33,7 +41,7 @@ const Navbar = () => {
                     <button className="absolute -top-2 -right-3 text-xs text-white bg-[var(--color-primary)] w-[18px] h-[18px] rounded-full">1</button>
                 </div>
 
-                <button className="cursor-pointer px-8 py-2 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] transition text-white rounded-full">
+                <button onClick={()=>navigate("/login")} className="cursor-pointer px-8 py-2 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] transition text-white rounded-full">
                     Login
                 </button>
             </div>
@@ -49,11 +57,12 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
-                <Link to={'/'}>Home</Link>
-                <Link to={'/'}>Shop</Link>
-                <Link to={'/'}>About</Link>
-                <Link to={'/'}>Contact</Link>
-                <button className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">
+                <Link onClick={()=>{setOpen(false)}} to={'/'} className={isActive("/")} >Home</Link>
+                <Link  onClick={()=>{setOpen(false)}}to={'/shop'} className={isActive("/shop")}>Shop</Link>
+                <Link onClick={()=>{setOpen(false)}} to={'/about'} className={isActive("/about")}>About</Link>
+                <Link onClick={()=>{setOpen(false)}} to={'/contact'} className={isActive("/contact")}>Contact</Link>
+
+                <button onClick={()=>{setOpen(false);navigate("/login")}} className="cursor-pointer px-6 py-2 mt-2 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] transition text-white rounded-full text-sm">
                     Login
                 </button>
             </div>
