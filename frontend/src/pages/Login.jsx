@@ -6,7 +6,7 @@ import { AppContext } from '../contex/AppContex.jsx'
 
 
 const Login = () => {
-  const {navigate} = useContext(AppContext)
+  const {navigate,setUser} = useContext(AppContext)
   const [formData, setFormData] = useState({email: "", password: ""});
 
   const  handleChange= (e)=>{
@@ -17,6 +17,7 @@ const Login = () => {
     e.preventDefault();
     console.log(formData);
     toast.success("login successfully")
+    setUser(true)
     navigate("/");
   }
 

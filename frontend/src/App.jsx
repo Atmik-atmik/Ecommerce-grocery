@@ -13,11 +13,13 @@ import AddAddress from './pages/AddAddress'
 import MyOrder from './pages/MyOrder'
 import SignUp from './pages/SignUp'
 import Navbar from './components/Navbar'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   const adminPath = useLocation().pathname.includes("admin");
   return (
-    <>
+    <>  
+      <Toaster/>
       <div>
        {!adminPath && <Navbar/>}
        <Routes>
