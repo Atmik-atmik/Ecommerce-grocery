@@ -41,6 +41,7 @@ const Hero = () => {
             {slides.map((slide,index)=>(
                 <SwiperSlide key={index}>
                   <div className='bg-[#D8E7C7] h-[800px] bg-cover flex flex-col md:flex-row items-center justify-center gap-4 ' style={{backgroundImage: `url(${assets.leef_layer_bg})`}}>
+
                     <div className='flex flex-col items-center'>
                       <img src={assets.banner} alt="" />
                       <h1 className='max-w-2xl text-3xl md:text-5xl font-extrabold            text-center capitalize'>
@@ -60,6 +61,18 @@ const Hero = () => {
                         </motion.button>    
                       </div>
                     </div>
+                    <motion.div 
+                    intitial = {{y:300, opacity: 0}}
+                    animate= {{y:0, opacity:1}}
+                    transition={{
+                      duration: 3,
+                      type: "spring",
+                      repeat: Infinity,
+                      repeatDelay: 2,
+                    }}
+                    className='mt-10 md:mt-0'>
+                      <img src={slide.img} alt="" className='h-[300px] md:h-[600px] ' />
+                    </motion.div>
                   </div>
 
 

@@ -78,7 +78,7 @@ const Navbar = () => {
             </button>
 
             {/* Mobile Menu  , hover on profile won't work for now*/ }
-            <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
+            <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden z-50`}>
                 <Link onClick={()=>{setOpen(false)}} to={'/'} className={isActive("/")} >Home</Link>
                 <Link  onClick={()=>{setOpen(false)}}to={'/shop'} className={isActive("/shop")}>Shop</Link>
                 <Link onClick={()=>{setOpen(false)}} to={'/about'} className={isActive("/about")}>About</Link>
