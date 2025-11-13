@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
-import Hero from '../components/Hero'
-
-
+import React, { useContext } from "react";
+import Hero from "../components/Hero";
+import Category from "../components/Category";
 
 const Home = () => {
- 
   return (
     <div>
-    <Hero/>
+      <Hero />
+      <Category />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
