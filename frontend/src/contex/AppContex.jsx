@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { categories } from "../assets/assets";
+import { categories, products } from "../assets/assets";
 
 export const AppContext = createContext();
 

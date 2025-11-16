@@ -13,7 +13,7 @@ const Category = () => {
     "bg-green-300",
     "bg-blue-300",
     "bg-cyan-300",
-    "bg-puple-300",
+    "bg-purple-300",
     "bg-pink-300",
     "bg-orange-300",
     "bg-teal-300",
@@ -32,25 +32,32 @@ const Category = () => {
         modules={{ Autoplay }}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
-        slidesPerview={6}
+        slidesPerView={6}
         breakpoints={{
           0: {
-            slidesPerview: 2,
+            slidesPerView: 2,
           },
 
           768: {
-            slidesPerview: 3,
+            slidesPerView: 3,
           },
           1024: {
-            slidesPerview: 6,
+            slidesPerView: 6  ,
           },
         }}
         className="w-full my-5"
       >
         {categoriesData.map((category, i) => (
           <SwiperSlide key={i}>
-            <motion.div>
+            <motion.div
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.3 }}
+              className={`w-[130px] md:w-[150px] h-[170px] rounded-md ${colors[i]} flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300 `}
+            >
               <img src={category.image} alt="" className="w-32 h-32" />
+              <h3 className="text-lg font-semibold text-gray-800 ">
+                {category.name}
+              </h3>
             </motion.div>
           </SwiperSlide>
         ))}
