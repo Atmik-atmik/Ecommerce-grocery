@@ -29,7 +29,7 @@ const Category = () => {
       </h2>
 
       <Swiper
-        modules={{ Autoplay }}
+        modules={[Autoplay]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
         slidesPerView={6}

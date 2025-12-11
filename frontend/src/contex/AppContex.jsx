@@ -8,16 +8,22 @@ const AppContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [categoriesData, setCategoriesData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
 
   const fetchCategories = async () => {
     setCategoriesData(categories);
   };
 
+  const fetchProducts = async () => {
+    setProductsData(products);
+  };
+
   useEffect(() => {
     fetchCategories();
+    fetchProducts();
   }, []);
 
-  const value = { navigate, user, setUser, categoriesData };
+  const value = { navigate, user, setUser, categoriesData, productsData };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
